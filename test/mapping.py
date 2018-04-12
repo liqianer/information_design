@@ -4,16 +4,16 @@ db = pymysql.connect("localhost", "root", "1997syx", "tag", use_unicode=True, ch
 cursor = db.cursor()
 
 wfile1 = open("ambiguity.txt", "w", encoding="utf-8")
-wfile2 = open("mapping.txt", "w", encoding="utf-8")
+# wfile2 = open("mapping.txt", "w", encoding="utf-8")
 saveList = []
 
 with open("urlList.txt", encoding="utf-8") as f:
     for line in f:
         line = line.strip()
         mUrl, movieName = line.split("\t")
-        movieName = movieName.split("/")[0]
-        if movieName:
-            sql = 'SELECT * FROM movie_info WHERE name LIKE "{movieName}%"'.format(movieName=movieName)
+        nmovieName = movieName.split("/")[0]
+        if nmovieName:
+            sql = 'SELECT * FROM movie_info WHERE name LIKE "{nmovieName}%"'.format(nmovieName=nmovieName)
             print(sql)
             try:
                 cursor.execute(sql)
